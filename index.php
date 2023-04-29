@@ -57,21 +57,7 @@ require_once __DIR__.'/vendor/autoload.php';
  * NOTE: If you change these, also change the error_reporting() code below
  */
 
-if (! defined('ENVIRONMENT')) {
-    $domain = strtolower($_SERVER['HTTP_HOST']);
-
-    switch ($domain) {
-    case 'www.yoursite.tld':
-      define('ENVIRONMENT', 'production');
-    break;
-    case 'test.yoursite.tld':
-      define('ENVIRONMENT', 'testing');
-    break;
-    default:
-      define('ENVIRONMENT', 'development');
-    break;
-  }
-}
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
 
 /*
  *---------------------------------------------------------------
@@ -317,3 +303,4 @@ switch (ENVIRONMENT) {
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
+
