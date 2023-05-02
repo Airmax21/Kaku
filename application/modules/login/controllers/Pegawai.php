@@ -5,10 +5,14 @@ class Pegawai extends MY_Controller {
     {
         // Load the constructer from MY_Controller
         parent::__construct();
+        
     }
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $header['judul'] = 'Login';
+        $header['css'] = array('login.css');
+        $this->load->view('app/header',$header);
+		$this->load->view('login');
 	}
 }
