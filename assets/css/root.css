@@ -3,3 +3,7 @@
     --fontfam: ;
     --fontcol: ;
 }
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+}

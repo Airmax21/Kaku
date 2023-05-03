@@ -13,7 +13,6 @@ body {
 }
 
 .title {
-    font-size: 40pt;
     color: #fff;
     margin: 0;
     position: absolute;
@@ -21,4 +20,27 @@ body {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.judul {
+    font-size: 35pt;
+    text-align: center;
+}
+
+.sub {
+    font-size: 25pt;
+    text-align: center;
+}
+
+.inptext {
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-size: 13pt;
+    background-color: transparent;
+    margin-bottom: 10%;
+    color: #fff;
+}
+
+.inpbutt {
+    width: 22vw;
 }
