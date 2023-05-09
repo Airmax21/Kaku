@@ -5,9 +5,6 @@ class M_register extends CI_Model
     function __construct() 
     {
         parent::__construct();
-        $this->load->library(array(
-            'encrypt'
-        ));
     }
 
     function get_data_username($username) 
@@ -35,7 +32,7 @@ class M_register extends CI_Model
     function register($author)
     {
         $data = $this->input->post();
-        $data['pass'] = $this->encrypt->encode($data['pass']);
+        $data['pass'] = password_hash($data['pass'],PASSWORD_BCRYPT);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['created_by'] = $author;
         $data['is_active'] = 1;
