@@ -21,11 +21,7 @@ class Pegawai extends MY_Controller {
 
     public function register()
     {
-        $this->m_register->register('Awal');
-        $header['judul'] = 'Register';
-        $header['css'] = array('login');
-        $data['jenis'] = 'Karyawan';
-        $this->load->view('app/header',$header);
-		$this->load->view('register',$data);
+        $this->m_register->register('register');
+        redirect(site_url() . "/login/pegawai");
     }
 }

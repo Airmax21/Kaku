@@ -5,6 +5,9 @@ class Pegawai extends MY_Controller {
     {
         // Load the constructer from MY_Controller
         parent::__construct();
+        $this->load->model(array(
+            'm_login'
+        ));
     }
 
 	public function index()
@@ -15,4 +18,11 @@ class Pegawai extends MY_Controller {
         $this->load->view('app/header',$header);
 		$this->load->view('login',$data);
 	}
+
+    public function auth(){
+        $login = $this->m_login->login();
+        if ($login != null) {
+            $this->cookie['username'] = $login['username'];
+        }
+    }
 }

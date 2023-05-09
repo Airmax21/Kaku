@@ -9,7 +9,7 @@
         </div>
         <div class="col-sm">
             <div class="title">
-                <form action="<?= base_url() ?>login/pegawai/auth" method="post">
+                <form action="<?= site_url() ?>/login/pegawai/auth" method="post">
                     <p class="judul">Login</p>
                     <br><br>
                         <input class="inptext" type="text" name="username" id="username" placeholder="Username" size="30">
