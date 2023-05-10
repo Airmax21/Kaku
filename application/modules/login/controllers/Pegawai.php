@@ -26,10 +26,11 @@ class Pegawai extends MY_Controller {
 
     public function auth(){
         $login = $this->m_login->login();
-        if ($login['data'] != '' ) {
+        if ($login) {
             $this->cookie['username'] = $login['username'];
             $this->cookie['id'] = $login['pegawai_id'];
             $this->cookie['fullname'] = $login['nama'];
+            $this->m_app->set_cookie_user($this->cookie);
             redirect(site_url() . '/dashboard/pegawai');
         }
         else {

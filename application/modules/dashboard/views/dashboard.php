@@ -71,7 +71,7 @@
           <span class="num">8</span>
         </a>
         <a href="#" class="profile">
-          <img src="img/people.png" />
+          <img src="<?= base_url() ?>/assets/img/pegawai/people.png" />
         </a>
       </nav>
       <!-- NAVBAR -->
@@ -139,7 +139,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <img src="img/people.png" />
+                    <img src="<?= base_url() ?>/assets/img/pegawai/people.png" />
                     <p>Ilham Akbar</p>
                   </td>
                   <td>01-10-2021</td>
@@ -147,7 +147,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <img src="img/people.png" />
+                    <img src="<?= base_url() ?>/assets/img/pegawai/people.png" />
                     <p>Ilham Akbar</p>
                   </td>
                   <td>01-10-2021</td>
@@ -155,7 +155,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <img src="img/people.png" />
+                    <img src="<?= base_url() ?>/assets/img/pegawai/people.png" />
                     <p>Ilham Akbar</p>
                   </td>
                   <td>01-10-2021</td>
@@ -163,7 +163,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <img src="img/people.png" />
+                    <img src="<?= base_url() ?>/assets/img/pegawai/people.png" />
                     <p>Ilham Akbar</p>
                   </td>
                   <td>01-10-2021</td>
@@ -171,7 +171,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <img src="img/people.png" />
+                    <img src="<?= base_url() ?>/assets/img/pegawai/people.png" />
                     <p>Ilham Akbar</p>
                   </td>
                   <td>01-10-2021</td>

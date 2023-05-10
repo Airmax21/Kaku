@@ -2,7 +2,7 @@
 
 class M_app extends CI_Model
 {
-    function __construct() 
+    function __construct()
     {
         parent::__construct();
     }
@@ -51,5 +51,17 @@ class M_app extends CI_Model
         } else {
             return json_decode(get_cookie($cookie_name), TRUE);
         }
+    }
+
+    function set_cookie_user($cookie_val)
+    {
+        $cookie_name = 'cook_username';
+        $CI = get_instance();
+        $cookie = array(
+            'name'   => $cookie_name,
+            'value'  => json_encode($cookie_val),
+            'expire' => '36000'
+        );
+        $CI->input->set_cookie($cookie);
     }
 }
