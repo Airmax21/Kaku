@@ -40,6 +40,7 @@ class M_app extends CI_Model
                 'username' => null,
                 'id' => null,
                 'fullname' => null,
+                'role' => null,
             );
             $cookie = array(
                 'name'   => $cookie_name,

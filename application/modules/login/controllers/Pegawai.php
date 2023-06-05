@@ -30,6 +30,7 @@ class Pegawai extends MY_Controller {
             $this->cookie['username'] = $login['username'];
             $this->cookie['id'] = $login['pegawai_id'];
             $this->cookie['fullname'] = $login['nama'];
+            $this->cookie['role'] = $login['role_id'];
             $this->m_app->set_cookie_user($this->cookie);
             redirect(site_url() . '/dashboard/pegawai');
         }

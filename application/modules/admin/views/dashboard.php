@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Selamat Datang, <?php echo $user ?></h1>
+                    <h1>Selamat Datang, <?= $this->cookie['fullname'] ?></h1>
                 </div>
                 <div class="col-sm-6">
 
@@ -25,15 +25,15 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Order</span>
-                                <span class="info-box-number"><?php echo $jumlahjenis['jumlah'][0]->jumlah ?></span>
+                                <span class="info-box-number"><?php echo $count_order ?></span>
                                 <span class="progress-description">
-                                    Order Belum Bayar &emsp; <?php echo $jumlahuser['yang_aktif'][0]->jumlah ?>
+                                    Order Belum Bayar &emsp; <?php echo $order_belum ?>
                                 </span>
                                 <span class="progress-description">
-                                    Order di Proses &emsp; <?php echo $jumlahuser['belum_aktif'][0]->jumlah ?>
+                                    Order di Proses &emsp; <?php echo $order_proses ?>
                                 </span>
                                 <span class="progress-description">
-                                    Order Sudah Selesai &emsp; <?php echo $jumlahuser['belum_aktif'][0]->jumlah ?>
+                                    Order Sudah Selesai &emsp; <?php echo $order_selesai ?>
                                 </span>
                             </div>
 
@@ -100,12 +100,12 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href=<?php echo site_url('obat/cetakpdf'); ?>>
+                            <a href=<?php echo site_url('admin/dashboard/order_cetakpdf'); ?>>
                                 <button type="button" class="btn btn-primary">
                                     Export PDF
                                 </button>
                             </a>
-                            <a href=<?php echo site_url('obat/cetakxls'); ?>>
+                            <a href=<?php echo site_url('admin/dashboard/order_cetakxls'); ?>>
                                 <button type="button" class="btn btn-primary">
                                     Export XLS
                                 </button>
@@ -122,7 +122,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    <?php foreach ($order as $o) : ?>
+                                        <tr>
+                                            <td><?= $o['order_id'] ?></td>
+                                            <td><?= $o['nama'] ?></td>
+                                            <td><?= $o['meja_id'] ?></td>
+                                            <td><?= 'Rp. '.number_format($o['grand_total'], 0, ",", ".") ?></td>
+                                            <td>
+                                                <?php if ($o['status'] = 1) : ?>
+                                                    <span class="badge badge-danger">Belum Bayar</span>
+                                                <?php elseif ($o['status'] = 2) : ?>
+                                                    <span class="badge badge-warning">Diproses</span>
+                                                <?php elseif ($o['status'] = 0) : ?>
+                                                    <span class="badge badge-success">Sudah Selesai</span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td><?= $o['tgl_pesan'] ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>

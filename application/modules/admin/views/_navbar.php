@@ -5,10 +5,28 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="<?= site_url('admin/dashboard') ?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="user" class="nav-link">User</a>
+        <a href="<?= site_url('admin/dashboard/order') ?>" class="nav-link">Order</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= site_url('admin/dashboard/pelanggan') ?>" class="nav-link">Pelanggan</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= site_url('admin/dashboard/jenis_menu') ?>" class="nav-link">Jenis Menu</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= site_url('admin/dashboard/menu') ?>" class="nav-link">Menu</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= site_url('admin/dashboard/meja') ?>" class="nav-link">Meja</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= site_url('admin/dashboard/pegawai') ?>" class="nav-link">Pegawai</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= site_url('admin/dashboard/role') ?>" class="nav-link">Role</a>
       </li>
     </ul>
 
@@ -41,22 +59,62 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="<?= site_url('admin/dashboard') ?>" class="nav-link">
               <p>
-                Dashboard
+                Home
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/user" class="nav-link">
+            <a href="<?= site_url('admin/order') ?>" class="nav-link">
               <p>
-                Manajemen User
+                Order
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('admin/pelanggan') ?>" class="nav-link">
+              <p>
+                Pelanggan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('admin/jenis_menu') ?>" class="nav-link">
+              <p>
+                Jenis Menu
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('admin/menu') ?>" class="nav-link">
+              <p>
+                Menu
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('admin/meja') ?>" class="nav-link">
+              <p>
+                Meja
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('admin/pegawai') ?>" class="nav-link">
+              <p>
+                Pegawai
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('admin/role') ?>" class="nav-link">
+              <p>
+                Role
               </p>
             </a>
           </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
