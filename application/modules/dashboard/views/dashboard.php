@@ -133,6 +133,8 @@
                 <tr>
                   <th>User</th>
                   <th>Date Order</th>
+                  <th>Total Harga</th>
+                  <th>Aksi</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -180,6 +182,7 @@
               </tbody>
             </table>
           </div>
+        </div>
           <!-- MAIN -->
 
     </section>

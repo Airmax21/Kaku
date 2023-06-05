@@ -23,7 +23,7 @@ class M_register extends CI_Model
         $sql = "SELECT 
                 * 
                 FROM mst_pegawai
-                WHERE username = ?";
+                WHERE pegawai_id = ?";
         $query = $this->db->query($sql,array($id));
         $result = $query->row_array();
         return $result;
@@ -32,7 +32,7 @@ class M_register extends CI_Model
     function register($author)
     {
         $data = $this->input->post();
-        $data['pass'] = password_hash($data['pass'],PASSWORD_BCRYPT);
+        $data['pass'] = $this->encrypt->encode($data['pass']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['created_by'] = $author;
         $data['is_active'] = 1;
