@@ -8,7 +8,7 @@
         <a href="<?= site_url('admin/dashboard') ?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/dashboard/order') ?>" class="nav-link">Order</a>
+        <a href="<?= site_url('admin/order') ?>" class="nav-link">Order</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?= site_url('admin/dashboard/pelanggan') ?>" class="nav-link">Pelanggan</a>

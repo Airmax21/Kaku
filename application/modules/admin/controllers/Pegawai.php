@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends MY_Controller
+class Pegawai extends MY_Controller
 {
     var $cookie;
     public function __construct()
@@ -10,7 +10,7 @@ class Dashboard extends MY_Controller
         $this->load->model(array(
             'app/m_app',
             'm_admin',
-            'm_order'
+            'm_pegawai'
         ));
         $this->cookie = $this->m_app->get_cookie_user();
         if($this->cookie['role'] != 1) redirect('login/pegawai');
@@ -18,14 +18,9 @@ class Dashboard extends MY_Controller
 
     public function index()
     {
-        $header['title'] = 'Dashboard Admin';
-        $main['order'] = $this->m_order->order_data(); 
-        $main['count_order'] = $this->m_order->count_order(); 
-        $main['order_belum'] = $this->m_order->count_status_belum(); 
-        $main['order_proses'] = $this->m_order->count_status_proses(); 
-        $main['order_selesai'] = $this->m_order->count_status_selesai(); 
+        $header['title'] = 'Admin Pegawai'; 
+        $main['pegawai'] = $this->m_pegawai->pegawai_data(); 
         $this->load->view('_header',$header);
-        $this->load->view('dashboard',$main);
+        $this->load->view('pegawai/index',$main);
     }
-
 }

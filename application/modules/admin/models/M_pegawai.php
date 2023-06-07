@@ -10,6 +10,17 @@ class M_pegawai extends CI_Model
         ));
     }
 
+    function pegawai_data()
+    {
+        $sql = "SELECT 
+                a.*,
+                b.role_nm, 
+                FROM mst_pegawai a
+                LEFT JOIN mst_role b ON a.role_id = b. role_id";
+        $query = $this->db->query($sql);
+        $result = $query->row_array();
+        return $result;
+    }
     function get_pegawai($id)
     {
         $sql = "SELECT 

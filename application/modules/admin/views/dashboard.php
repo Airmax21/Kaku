@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-12">
-                    <a href=<?php echo base_url('admin/order'); ?>>
+                    <a href=<?php echo site_url('admin/order'); ?>>
                         <div class="info-box bg-info">
 
                             <span class="info-box-icon"><i class="fas fa-coffee mx-0"></i></span>
@@ -43,7 +43,7 @@
                     <!-- /.info-box -->
                 </div>
                 <div class="col-md-4 col-sm-6 col-12">
-                    <a href=<?php echo base_url('admin/pelanggan'); ?>>
+                    <a href=<?php echo site_url('admin/pelanggan'); ?>>
                         <div class="info-box bg-success">
 
                             <span class="info-box-icon"><i class="fas fa-users mx-0"></i></span>
@@ -68,7 +68,7 @@
                     <!-- /.info-box -->
                 </div>
                 <div class="col-md-4 col-sm-6 col-12">
-                    <a href=<?php echo base_url('admin/pegawai'); ?>>
+                    <a href=<?php echo site_url('admin/pegawai'); ?>>
                         <div class="info-box bg-danger">
                             <span class="info-box-icon"><i class="fas fa-address-card mx-0"></i></span>
                             <div class="info-box-content">
@@ -100,12 +100,12 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href=<?php echo site_url('admin/dashboard/order_cetakpdf'); ?>>
+                            <a href=<?php echo site_url('admin/order_cetakpdf'); ?>>
                                 <button type="button" class="btn btn-primary">
                                     Export PDF
                                 </button>
                             </a>
-                            <a href=<?php echo site_url('admin/dashboard/order_cetakxls'); ?>>
+                            <a href=<?php echo site_url('admin/order_cetakxls'); ?>>
                                 <button type="button" class="btn btn-primary">
                                     Export XLS
                                 </button>
@@ -125,7 +125,7 @@
                                     <?php foreach ($order as $o) : ?>
                                         <tr>
                                             <td><?= $o['order_id'] ?></td>
-                                            <td><?= $o['nama'] ?></td>
+                                            <td><?= $o['nama'] != null ? $o['nama'] : $o['pelanggan_nm'] ?></td>
                                             <td><?= $o['meja_id'] ?></td>
                                             <td><?= 'Rp. '.number_format($o['grand_total'], 0, ",", ".") ?></td>
                                             <td>
