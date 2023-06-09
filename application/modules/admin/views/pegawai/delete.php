@@ -1,41 +1,49 @@
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalUpdateTitle" aria-hidden="true">
+<div class="modal fade" id="modalDelete<?= $pegawai['pegawai_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalUpdateTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalUpdateTitle">Update Order</h5>
+                <h5 class="modal-title" id="modalUpdateTitle">Delete Pegawai</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action=<?php echo site_url('admin/order/tambah') ?> method="post" enctype="multipart/form-data">
+            <form action=<?php echo site_url('admin/pegawai/delete') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ID Order</label>
-                        <input type="text" name="username" readonly class="form-control" value="<?= $order_id ?>">
+                        <label for="exampleInputEmail1">ID Pegawai</label>
+                        <input type="text" name="pegawai_id" readonly class="form-control" placeholder="Masukkan Username" value=<?= $pegawai['pegawai_id'] ?>>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Pelanggan</label>
-                        <input type="text" name="pelanggan_nm" readonly class="form-control" placeholder="Masukkan Nama" value="<?= $nama != null ? $nama : $pelanggan_nm ?>">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" name="username" readonly class="form-control" placeholder="Masukkan Username" value=<?= $pegawai['username'] ?>>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">No Meja</label>
-                        <input type="text" class="form-control" readonly name="meja_id" placeholder="Masukkan No Meja" value="<?= $meja_id ?>">
+                        <label for="exampleInputEmail1">Fullname</label>
+                        <input type="text" name="nama" readonly class="form-control" placeholder="Masukkan fullname" value=<?= $pegawai['nama'] ?>>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Total Harga</label>
-                        <input type="text" class="form-control" readonly name="fullname" placeholder="Masukkan Total Harga" <?= $grand_total ?>>
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" readonly name="email" placeholder="Masukkan Email" value=<?= $pegawai['email'] ?>>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Status</label>
-                        <select name="status" readonly class="form-control">
-                            <option value="1" <?php if($status == 1) echo 'selected' ?>>Belum Bayar</option>
-                            <option value="2" <?php if($status == 2) echo 'selected' ?>>Proses</option>
-                            <option value="0" <?php if($status == 0) echo 'selected' ?>>Selesai</option>
+                        <label for="exampleInputEmail1">Alamat</label>
+                        <input type="text" name="alamat" readonly class="form-control" placeholder="Masukkan Alamat" value="<?= $pegawai['alamat'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">No Telepon</label>
+                        <input type="text" class="form-control" readonly name="no_telp" placeholder="Masukkan No Telepon" value=<?= $pegawai['no_telp'] ?>>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Role</label>
+                        <select name="role_id" readonly class="form-control">
+                            <?php foreach ($role['role'] as $r) : ?>
+                                <option value="<?= $r['role_id'] ?>" <?php $r['role_id'] == $pegawai['role_id'] ? 'selected' : '' ?>><?= $r['role_nm'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Tanggal Pemesanan</label>
-                        <input type="datetime-local" readonly name="tgl_pesan" id="tgl_pesan" class="form-control" value="<?= $tgl_pesan ?>">
+                        <label for="exampleInputPassword1">Jabatan</label>
+                        <input type="text" readonly class="form-control" name="jabatan" placeholder="Masukkan Jabatan" value=<?= $pegawai['jabatan'] ?>>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -50,12 +50,12 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Pelanggan</span>
-                                <span class="info-box-number"><?php echo $jumlahjenis['jumlah'][0]->jumlah ?></span>
+                                <span class="info-box-number"><?= $jumlahpelanggan['totalpelanggan'] ?></span>
                                 <span class="progress-description">
-                                    Pelanggan Belum Aktivasi &emsp; <?php echo $jumlahuser['belum_aktif'][0]->jumlah ?>
+                                    Pelanggan Belum Aktivasi &emsp; <?= $jumlahpelanggan['belumaktif'] ?>
                                 </span>
                                 <span class="progress-description">
-                                    Pelanggan Sudah Aktivasi &emsp; <?php echo $jumlahuser['belum_aktif'][0]->jumlah ?>
+                                    Pelanggan Sudah Aktivasi &emsp; <?= $jumlahpelanggan['sudahaktif'] ?>
                                 </span>
                                 <span class="progress-description">
                                     <br>
@@ -73,12 +73,12 @@
                             <span class="info-box-icon"><i class="fas fa-address-card mx-0"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Pegawai</span>
-                                <span class="info-box-number"><?php echo $jumlahobat['jumlah'][0]->jumlah ?></span>
+                                <span class="info-box-number"><?= $jumlahpegawai['totalpegawai'] ?></span>
                                 <span class="progress-description">
-                                    Pegawai Belum Aktivasi &emsp; <?php echo $jumlahobat['yang_expired'][0]->jumlah ?>
+                                    Pegawai Belum Aktivasi &emsp; <?= $jumlahpegawai['belumaktif'] ?>
                                 </span>
                                 <span class="progress-description">
-                                    Pegawai Sudah Aktivasi &emsp; <?php echo $jumlahobat['belum_expired'][0]->jumlah ?>
+                                    Pegawai Sudah Aktivasi &emsp; <?= $jumlahpegawai['sudahaktif'] ?>
                                 </span>
                                 <span class="progress-description">
                                     <br>

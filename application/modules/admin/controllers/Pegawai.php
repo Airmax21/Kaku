@@ -10,7 +10,8 @@ class Pegawai extends MY_Controller
         $this->load->model(array(
             'app/m_app',
             'm_admin',
-            'm_pegawai'
+            'm_pegawai',
+            'm_role'
         ));
         $this->cookie = $this->m_app->get_cookie_user();
         if($this->cookie['role'] != 1) redirect('login/pegawai');
@@ -19,8 +20,29 @@ class Pegawai extends MY_Controller
     public function index()
     {
         $header['title'] = 'Admin Pegawai'; 
-        $main['pegawai'] = $this->m_pegawai->pegawai_data(); 
+        $main['pegawai'] = $this->m_pegawai->pegawai_data();
+        $main['role']['role'] = $this->m_role->role_data(); 
         $this->load->view('_header',$header);
         $this->load->view('pegawai/index',$main);
+    }
+    public function aktivasi($id)
+    {
+        $this->m_pegawai->aktivasi($id);
+        redirect('admin/pegawai');
+    }
+    public function update()
+    {
+        $this->m_pegawai->update_pegawai();
+        redirect('admin/pegawai');
+    }
+    public function tambah()
+    {
+        $this->m_pegawai->create_pegawai();
+        redirect('admin/pegawai');
+    }
+    public function delete()
+    {
+        $this->m_pegawai->delete_pegawai();
+        redirect('admin/pegawai');
     }
 }

@@ -11,22 +11,22 @@
         <a href="<?= site_url('admin/order') ?>" class="nav-link">Order</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/dashboard/pelanggan') ?>" class="nav-link">Pelanggan</a>
+        <a href="<?= site_url('admin/pelanggan') ?>" class="nav-link">Pelanggan</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/dashboard/jenis_menu') ?>" class="nav-link">Jenis Menu</a>
+        <a href="<?= site_url('admin/jenis_menu') ?>" class="nav-link">Jenis Menu</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/dashboard/menu') ?>" class="nav-link">Menu</a>
+        <a href="<?= site_url('admin/menu') ?>" class="nav-link">Menu</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/dashboard/meja') ?>" class="nav-link">Meja</a>
+        <a href="<?= site_url('admin/meja') ?>" class="nav-link">Meja</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/dashboard/pegawai') ?>" class="nav-link">Pegawai</a>
+        <a href="<?= site_url('admin/pegawai') ?>" class="nav-link">Pegawai</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/dashboard/role') ?>" class="nav-link">Role</a>
+        <a href="<?= site_url('admin/role') ?>" class="nav-link">Role</a>
       </li>
     </ul>
 

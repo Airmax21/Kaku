@@ -5,6 +5,9 @@ class M_register extends CI_Model
     function __construct() 
     {
         parent::__construct();
+        $this->load->library(array(
+            'encrypt'
+        ));
     }
 
     function get_data_username($username) 

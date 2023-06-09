@@ -21,41 +21,37 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Table Pegawai</h3>
+              <h3 class="card-title">Table Pelanggan</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">
-                Tambah Pegawai
+                Tambah Pelanggan
               </button>
               <!-- Modal -->
-              <?php $this->load->view('tambah',$role) ?>
+              <?php $this->load->view('tambah') ?>
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>ID Pegawai</th>
+                    <th>ID Pelanggan</th>
                     <th>Username</th>
-                    <th>Nama Pegawai</th>
+                    <th>Nama Pelanggan</th>
                     <th>Email</th>
                     <th>Alamat Rumah</th>
                     <th>No Telepon</th>
-                    <th>Role</th>
-                    <th>Jabatan</th>
                     <th>Aktif</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($pegawai as $p) : ?>
+                  <?php foreach ($pelanggan as $p) : ?>
                     <tr>
-                      <td><?= $p['pegawai_id'] ?></td>
+                      <td><?= $p['pelanggan_id'] ?></td>
                       <td><?= $p['username'] ?></td>
                       <td><?= $p['nama'] ?></td>
                       <td><?= $p['email'] ?></td>
                       <td><?= $p['alamat'] ?></td>
                       <td><?= $p['no_telp'] ?></td>
-                      <td><?= $p['role_nm'] ?></td>
-                      <td><?= $p['jabatan'] ?></td>
                       <td>
                         <?php if ($p['is_active'] == 0) : ?>
                           <span class="badge badge-danger">Belum Aktif</span>
@@ -64,21 +60,21 @@
                         <?php endif; ?>
                       </td>
                       <td>
-                        <a href="<?= site_url('admin/pegawai/aktivasi/') . $p['pegawai_id'] ?>">
+                        <a href="<?= site_url('admin/pelanggan/aktivasi/') . $p['pelanggan_id'] ?>">
                           <button type="button" class="btn btn-primary">
                             Aktivasi
                           </button>
                         </a>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalUpdate<?= $p['pegawai_id'] ?>">
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalUpdate<?= $p['pelanggan_id'] ?>">
                           Update
                         </button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?= $p['pegawai_id'] ?>">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?= $p['pelanggan_id'] ?>">
                           Delete
                         </button>
                       </td>
                       <?php 
                       $data['role'] = $role;
-                      $data['pegawai'] = $p;
+                      $data['pelanggan'] = $p;
                       $this->load->view('update', $data);
                       ?>
                       <?php $this->load->view('delete', $data); 
@@ -88,14 +84,12 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th>ID Pegawai</th>
+                    <th>ID pelanggan</th>
                     <th>Username</th>
-                    <th>Nama Pegawai</th>
+                    <th>Nama pelanggan</th>
                     <th>Email</th>
                     <th>Alamat Rumah</th>
                     <th>No Telepon</th>
-                    <th>Role</th>
-                    <th>Jabatan</th>
                     <th>Aktif</th>
                     <th>Aksi</th>
                   </tr>
