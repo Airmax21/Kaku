@@ -25,15 +25,15 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Order</span>
-                                <span class="info-box-number"><?php echo $count_order ?></span>
+                                <span class="info-box-number"><?php echo $jumlahorder['pesanan'] ?></span>
                                 <span class="progress-description">
-                                    Order Belum Bayar &emsp; <?php echo $order_belum ?>
+                                    Order Belum Bayar &emsp; <?php echo $jumlahorder['antrian'] ?>
                                 </span>
                                 <span class="progress-description">
-                                    Order di Proses &emsp; <?php echo $order_proses ?>
+                                    Order di Proses &emsp; <?php echo $jumlahorder['proses'] ?>
                                 </span>
                                 <span class="progress-description">
-                                    Order Sudah Selesai &emsp; <?php echo $order_selesai ?>
+                                    Order Sudah Selesai &emsp; <?php echo $jumlahorder['selesai'] ?>
                                 </span>
                             </div>
 

@@ -10,6 +10,7 @@ class Pegawai extends MY_Controller
         parent::__construct();
         $this->load->model(array(
             'app/m_app',
+            'm_order'
 
         ));
         $this->cookie = $this->m_app->get_cookie_user();
@@ -18,11 +19,13 @@ class Pegawai extends MY_Controller
     public function index()
     {
         if ($this->cookie['username']) {
-            $header['judul'] = 'Login';
+            $header['judul'] = 'Dashboard';
             $header['css'] = array('dashboard');
             $data['jenis'] = 'Karyawan';
+            $data['count'] = $this->m_order->count();
+            $data['main'] = $this->m_order->order_data();
             $this->load->view('app/header', $header);
-            $this->load->view('dashboard', $data);
+            $this->load->view('index', $data);
         }
         else {
             redirect(site_url() . '/login/pegawai');

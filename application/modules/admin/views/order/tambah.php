@@ -10,10 +10,6 @@
             <form action=<?php echo site_url('admin/order/tambah') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ID Order</label>
-                        <input type="text" name="username" readonly class="form-control" value="">
-                    </div>
-                    <div class="form-group">
                         <label for="exampleInputEmail1">Nama Pelanggan</label>
                         <input type="text" name="pelanggan_nm" class="form-control" placeholder="Masukkan Nama">
                     </div>
@@ -23,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Harga</label>
-                        <input type="text" class="form-control" name="fullname" placeholder="Masukkan Total Harga">
+                        <input type="text" class="form-control" name="grand_total" placeholder="Masukkan Total Harga">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Status</label>

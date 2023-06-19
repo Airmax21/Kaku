@@ -24,4 +24,21 @@ class Order extends MY_Controller
         $this->load->view('order/index',$main);
     }
 
+    public function tambah()
+    {
+        $this->m_order->create_order();
+        redirect('admin/order');
+    }
+
+    public function update()
+    {
+        $this->m_order->update_order();
+        redirect('admin/order');
+    }
+    public function delete()
+    {
+        $this->m_order->delete_order();
+        redirect('admin/order');
+    }
+
 }

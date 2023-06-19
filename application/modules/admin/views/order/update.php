@@ -7,11 +7,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action=<?php echo site_url('admin/order/tambah') ?> method="post" enctype="multipart/form-data">
+            <form action=<?php echo site_url('admin/order/update') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">ID Order</label>
-                        <input type="text" name="username" readonly class="form-control" value="<?= $order_id ?>">
+                        <input type="text" name="order_id" readonly class="form-control" value="<?= $order_id ?>">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Pelanggan</label>
@@ -23,14 +23,14 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Harga</label>
-                        <input type="text" class="form-control" name="fullname" placeholder="Masukkan Total Harga" <?= $grand_total ?>>
+                        <input type="text" class="form-control" name="grand_total" placeholder="Masukkan Total Harga" value="<?= $grand_total ?>">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Status</label>
                         <select name="status" class="form-control">
-                            <option value="1" <?php if($status == 1) echo 'selected' ?> >Belum Bayar</option>
-                            <option value="2" <?php if($status == 2) echo 'selected' ?>>Proses</option>
-                            <option value="0" <?php if($status == 0) echo 'selected' ?>>Selesai</option>
+                            <option value="1" <?php if ($status == 1) echo 'selected' ?>>Belum Bayar</option>
+                            <option value="2" <?php if ($status == 2) echo 'selected' ?>>Proses</option>
+                            <option value="0" <?php if ($status == 0) echo 'selected' ?>>Selesai</option>
                         </select>
                     </div>
                     <div class="form-group">

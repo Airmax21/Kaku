@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_order extends CI_Model
+class M_menu extends CI_Model
 {
     function __construct()
     {

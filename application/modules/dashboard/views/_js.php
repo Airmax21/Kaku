@@ -9,12 +9,20 @@
 				i.parentElement.classList.remove('active');
 			})
 			li.classList.add('active');
+			// $.post('<?= site_url() . '/rajal/pengkajian_awal/ajax/view_tab_menu/' ?>', {
+			// 	view_name: view_name,
+			// 	id: '<?= $main['reg_id'] ?>',
+			// 	asalpasien: '<?= $asalpasien ?>',
+			// 	jenis_pengkajian_id: '<?= @$jenis_pengkajian_id ?>'
+			// }, function(data) {
+			// 	if (data_id != '') {
+			// 		$('#body-' + data_id).html(data.html);
+			// 	} else {
+			// 		$('#body-blank').html(data.html);
+			// 	}
+			// }, 'json');
 		})
 	});
-
-
-
-
 	// TOGGLE SIDEBAR
 	const menuBar = document.querySelector('#content nav .bx.bx-menu');
 	const sidebar = document.getElementById('sidebar');
@@ -22,13 +30,6 @@
 	menuBar.addEventListener('click', function() {
 		sidebar.classList.toggle('hide');
 	})
-
-
-
-
-
-
-
 	const searchButton = document.querySelector('#content nav form .form-input button');
 	const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
 	const searchForm = document.querySelector('#content nav form');
@@ -63,11 +64,7 @@
 			searchForm.classList.remove('show');
 		}
 	})
-
-
-
 	const switchMode = document.getElementById('switch-mode');
-
 	switchMode.addEventListener('change', function() {
 		if (this.checked) {
 			document.body.classList.add('dark');

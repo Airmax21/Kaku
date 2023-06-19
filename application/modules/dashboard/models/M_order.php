@@ -13,9 +13,7 @@ class M_order extends CI_Model
                 a.*,
                 b.nama 
                 FROM dat_order a
-                LEFT JOIN mst_pelanggan b 
-                ON a.pelanggan_id = b.pelanggan_id
-                WHERE a.is_delete=0";
+                LEFT JOIN mst_pelanggan b ON a.pelanggan_id = b.pelanggan_id";
         $query = $this->db->query($sql);
         $result = $query->result_array();
         return $result;
@@ -30,38 +28,28 @@ class M_order extends CI_Model
         $result = $query->row_array();
         return $result;
     }
-    function create_order()
+    function create_order($author)
     {
         $data = $this->input->post();
+        $data['pass'] = $this->encrypt->encode($data['pass']);
         $data['created_at'] = date('Y-m-d H:i:s');
-        $data['created_by'] = $this->cookie['username'];
+        $data['created_by'] = $author;
+        $data['is_active'] = 1;
         $data['is_delete'] = 0;
         $this->db->insert('dat_order', $data);
     }
-    function update_order()
+    function update_order($id)
     {
         $data = $this->input->post();
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $data['updated_by'] = $this->cookie['username'];
-        $this->db->where('order_id', $data['order_id']);
-        $this->db->update('dat_order', $data);
-    }
-    function delete_order()
-    {
-        $id = $this->input->post('order_id');
-        $data['deleted_at'] = date('Y-m-d H:i:s');
-        $data['deleted_by'] = $this->cookie['username'];
-        $data['is_delete'] = 1;
-        $this->db->where('order_id', $id);
-        $this->db->update('dat_order', $data);
+
+        $this->db->update('dat_order',$data,$id);
     }
     function count()
     {
         $sql = "SELECT 
         COUNT(1) as pesanan,
         antrian.antrian,
-        selesai.selesai,
-        proses.proses
+        selesai.selesai
         FROM dat_order,
         (SELECT
         COUNT(1) as antrian
@@ -72,12 +60,7 @@ class M_order extends CI_Model
         COUNT(1) as selesai
         FROM dat_order
         WHERE status = 0
-        AND is_delete=0) AS selesai,
-        (SELECT
-        COUNT(1) as proses
-        FROM dat_order
-        WHERE status = 2
-        AND is_delete=0) AS proses
+        AND is_delete=0) AS selesai
         WHERE is_delete=0";
         $query = $this->db->query($sql);
         $result = $query->row_array();

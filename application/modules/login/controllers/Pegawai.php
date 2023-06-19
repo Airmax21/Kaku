@@ -35,7 +35,8 @@ class Pegawai extends MY_Controller {
             redirect(site_url() . '/dashboard/pegawai');
         }
         else {
-            print $login;
+            http_response_code(400);
+            echo 'Username atau Password anda salah';
         }
     }
 }
