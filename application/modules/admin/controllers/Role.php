@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Jenis_Menu extends MY_Controller
+class Role extends MY_Controller
 {
     var $cookie;
     public function __construct()
@@ -10,7 +10,7 @@ class Jenis_Menu extends MY_Controller
         $this->load->model(array(
             'app/m_app',
             'm_admin',
-            'm_jenis_menu'
+            'm_role'
         ));
         $this->cookie = $this->m_app->get_cookie_user();
         if($this->cookie['role'] != 1) redirect('login/pegawai');
@@ -18,27 +18,27 @@ class Jenis_Menu extends MY_Controller
 
     public function index()
     {
-        $header['title'] = 'Admin Jenis Menu'; 
-        $main['jenis_menu'] = $this->m_jenis_menu->jenis_data(); 
+        $header['title'] = 'Admin Role'; 
+        $main['role'] = $this->m_role->role_data(); 
         $this->load->view('_header',$header);
-        $this->load->view('jenis_menu/index',$main);
+        $this->load->view('role/index',$main);
     }
 
     public function tambah()
     {
-        $this->m_jenis_menu->create_jenis();
-        redirect('admin/jenis_menu');
+        $this->m_role->create_role();
+        redirect('admin/role');
     }
 
     public function update()
     {
-        $this->m_jenis_menu->update_jenis();
-        redirect('admin/jenis_menu');
+        $this->m_role->update_role();
+        redirect('admin/role');
     }
     public function delete()
     {
-        $this->m_jenis_menu->delete_jenis();
-        redirect('admin/jenis_menu');
+        $this->m_role->delete_role();
+        redirect('admin/role');
     }
 
 }

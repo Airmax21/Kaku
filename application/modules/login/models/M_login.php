@@ -19,7 +19,8 @@ class M_login extends CI_Model
             $sql = "SELECT
                     *
                     FROM mst_pegawai
-                    WHERE username = ?";
+                    WHERE username = ?
+                    AND is_delete=0";
             $query = $this->db->query($sql, array($data['username']));
             $result = $query->row_array();
             if($result != NULL) return $result;
@@ -33,7 +34,8 @@ class M_login extends CI_Model
         $sql = "SELECT
                 pass
                 FROM mst_pegawai
-                WHERE username = ?";
+                WHERE username = ?
+                AND is_delete=0";
         $query = $this->db->query($sql, array($username));
         $result = $query->row_array();
         return $result['pass'];
