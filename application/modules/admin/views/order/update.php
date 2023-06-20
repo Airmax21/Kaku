@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdateTitle" aria-hidden="true">
+<div class="modal fade" id="modalUpdate<?= $order_id ?>" tabindex="-1" role="dialog" aria-labelledby="modalUpdateTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Harga</label>
-                        <input type="text" class="form-control" name="grand_total" placeholder="Masukkan Total Harga" value="<?= $grand_total ?>">
+                        <input type="text" class="form-control" readonly name="grand_total" placeholder="Masukkan Total Harga" value="<?= $grand_total ?>">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Status</label>

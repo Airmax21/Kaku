@@ -7,23 +7,20 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action=<?php echo site_url('admin/order/tambah') ?> method="post" enctype="multipart/form-data">
+            <form action=<?php echo site_url('admin/detail_order/tambah') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
+                    <input type="hidden" name="order_id" value="<?= $order_id ?>">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Pelanggan</label>
-                        <input type="text" name="pelanggan_nm" class="form-control" placeholder="Masukkan Nama">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">No Meja</label>
-                        <input type="text" class="form-control" name="meja_id" placeholder="Masukkan No Meja">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Status</label>
-                        <select name="status" class="form-control">
-                            <option value="1">Belum Bayar</option>
-                            <option value="2">Proses</option>
-                            <option value="0">Selesai</option>
+                        <label for="exampleInputEmail1">Nama Menu</label>
+                        <select name="menu_id" class="form-control">
+                            <?php foreach ($menu as $r) : ?>
+                                <option value="<?= $r['menu_id'] ?>"><?= $r['menu_nm'] ?></option>
+                            <?php endforeach; ?>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Jumlah</label>
+                        <input type="text" class="form-control" name="jumlah" placeholder="Masukkan Jumlah">
                     </div>
                     <div class="form-group">
                         <label>Tanggal Pemesanan</label>

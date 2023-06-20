@@ -7,53 +7,76 @@ class M_menu extends CI_Model
         parent::__construct();
     }
     
-    function order_data()
+    function menu_data()
     {
         $sql = "SELECT 
                 a.*,
-                b.nama 
-                FROM dat_order a
-                LEFT JOIN mst_pelanggan b 
-                ON a.pelanggan_id = b.pelanggan_id
+                b.jenis_nm
+                FROM mst_menu a
+                LEFT JOIN mst_jenis_menu b
+                ON a.jenis_id=b.jenis_id
                 WHERE a.is_delete=0";
         $query = $this->db->query($sql);
         $result = $query->result_array();
         return $result;
     }
-    function get_order($id)
+    function get_menu($id)
     {
         $sql = "SELECT 
                 * 
-                FROM dat_order
-                WHERE order_id = ?";
+                FROM mst_menu
+                WHERE menu_id = ?";
         $query = $this->db->query($sql,array($id));
         $result = $query->row_array();
         return $result;
     }
-    function create_order()
+    function create_menu()
     {
         $data = $this->input->post();
+        if(!empty($_FILES['gambar']['name'])) {
+            $config['upload_path']          = FCPATH . "assets/img/menu/";
+            $config['allowed_types']        = 'gif|jpg|jpeg|png';
+            $config['file_name']            = $_FILES['gambar']['name'];
+            $config['overwrite']            = true;
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('gambar')) {
+                $data['gambar'] =  $this->upload->data('file_name');
+            }
+        }
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['created_by'] = $this->cookie['username'];
         $data['is_delete'] = 0;
-        $this->db->insert('dat_order', $data);
+        $this->db->insert('mst_menu', $data);
     }
-    function update_order()
+    function update_menu()
     {
         $data = $this->input->post();
+        if(!empty($_FILES['gambar']['name'])) {
+            $config['upload_path']          = FCPATH . "assets/img/menu/";
+            $config['allowed_types']        = 'gif|jpg|jpeg|png';
+            $config['file_name']            = $_FILES['gambar']['name'];
+            $config['overwrite']            = true;
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('gambar')) {
+                $data['gambar'] =  $this->upload->data('file_name');
+            }
+        }
         $data['updated_at'] = date('Y-m-d H:i:s');
         $data['updated_by'] = $this->cookie['username'];
-        $this->db->where('order_id', $data['order_id']);
-        $this->db->update('dat_order', $data);
+        $this->db->where('menu_id', $data['menu_id']);
+        $this->db->update('mst_menu', $data);
     }
-    function delete_order()
+    function delete_menu()
     {
-        $id = $this->input->post('order_id');
+        $id = $this->input->post('menu_id');
+        $data = $this->input->post();
         $data['deleted_at'] = date('Y-m-d H:i:s');
         $data['deleted_by'] = $this->cookie['username'];
         $data['is_delete'] = 1;
-        $this->db->where('order_id', $id);
-        $this->db->update('dat_order', $data);
+        $this->db->where('menu_id', $id);
+        $this->db->update('mst_menu', $data);
     }
     function count()
     {
@@ -62,20 +85,20 @@ class M_menu extends CI_Model
         antrian.antrian,
         selesai.selesai,
         proses.proses
-        FROM dat_order,
+        FROM mst_menu,
         (SELECT
         COUNT(1) as antrian
-        FROM dat_order
+        FROM mst_menu
         WHERE status = 1
         AND is_delete=0) AS antrian,
         (SELECT
         COUNT(1) as selesai
-        FROM dat_order
+        FROM mst_menu
         WHERE status = 0
         AND is_delete=0) AS selesai,
         (SELECT
         COUNT(1) as proses
-        FROM dat_order
+        FROM mst_menu
         WHERE status = 2
         AND is_delete=0) AS proses
         WHERE is_delete=0";

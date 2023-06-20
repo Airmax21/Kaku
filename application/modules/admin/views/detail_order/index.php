@@ -21,66 +21,65 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Table Detail Order</h3>
+              <h3 class="card-title">Tabel Detail Order ID <?= $order_id ?></h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">
-                Tambah Order
+                Tambah Pesanan
               </button>
               <!-- Modal -->
-              <?php $this->load->view('tambah') ?>
+              <?php $this->load->view('tambah', $menu) ?>
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>ID Detail Order</th>
-                    <th>Nama Makanan</th>
-                    <th>Jenis Makanan</th>
-                    <th>Harga</th>
+                    <th>Nama Menu</th>
+                    <th>No Meja</th>
                     <th>Jumlah</th>
+                    <th>Harga</th>
+                    <th>Tanggal Pemesanan</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($order as $o) : ?>
+                  <?php
+                  $jumlah = 0;
+                  foreach ($detail_order as $o) : ?>
                     <tr>
-                      <td><?= $o['order_id'] ?></td>
-                      <td><?= $o['nama'] != null ? $o['nama'] : $o['pelanggan_nm'] ?></td>
+                      <td><?= $o['detail_order_id'] ?></td>
+                      <td><?= $o['menu_nm'] ?></td>
                       <td><?= $o['meja_id'] ?></td>
-                      <td><?= 'Rp. ' . number_format($o['grand_total'], 0, ",", ".") ?></td>
-                      <td>
-                        <?php if ($o['status'] == 1) : ?>
-                          <span class="badge badge-danger">Belum Bayar</span>
-                        <?php elseif ($o['status'] == 2) : ?>
-                          <span class="badge badge-warning">Diproses</span>
-                        <?php elseif ($o['status'] == 0) : ?>
-                          <span class="badge badge-success">Sudah Selesai</span>
-                        <?php endif; ?>
-                      </td>
+                      <td><?= $o['jumlah'] ?></td>
+                      <td><?= 'Rp. ' . number_format($o['jumlah'] * $o['harga'], 0, ",", ".") ?></td>
                       <td><?= $o['tgl_pesan'] ?></td>
                       <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate<?php echo $jenisobat->id_jenis_obat ?>">
-                          Detail
-                        </button>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalUpdate<?php echo $jenisobat->id_jenis_obat ?>">
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalUpdate<?= $o['detail_order_id'] ?>">
                           Update
                         </button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $jenisobat->id_jenis_obat ?>">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?= $o['detail_order_id'] ?>">
                           Delete
                         </button>
                       </td>
                       <?php $this->load->view('update', $o) ?>
                       <?php $this->load->view('delete', $o) ?>
                     </tr>
-                  <?php endforeach; ?>
+                  <?php
+                    $jumlah += $o['jumlah'] * $o['harga'];
+                  endforeach; ?>
                 </tbody>
                 <tfoot>
                   <tr>
+                    <th colspan="6">Total Harga</th>
+                    <th><?= 'Rp. ' . number_format($order['grand_total'], 0, ",", ".") ?></th>
+                  </tr>
+                  <tr>
                     <th>ID Detail Order</th>
-                    <th>Nama Makanan</th>
-                    <th>Jenis Makanan</th>
-                    <th>Harga</th>
+                    <th>Nama Menu</th>
+                    <th>No Meja</th>
                     <th>Jumlah</th>
+                    <th>Harga</th>
+                    <th>Tanggal Pemesanan</th>
                     <th>Aksi</th>
                   </tr>
                 </tfoot>

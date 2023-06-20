@@ -20,9 +20,6 @@
         <a href="<?= site_url('admin/menu') ?>" class="nav-link">Menu</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/meja') ?>" class="nav-link">Meja</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
         <a href="<?= site_url('admin/pegawai') ?>" class="nav-link">Pegawai</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
@@ -93,13 +90,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= site_url('admin/meja') ?>" class="nav-link">
-              <p>
-                Meja
-              </p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="<?= site_url('admin/pegawai') ?>" class="nav-link">
               <p>
