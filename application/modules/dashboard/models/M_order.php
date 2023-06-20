@@ -13,7 +13,36 @@ class M_order extends CI_Model
                 a.*,
                 b.nama 
                 FROM dat_order a
-                LEFT JOIN mst_pelanggan b ON a.pelanggan_id = b.pelanggan_id";
+                LEFT JOIN mst_pelanggan b ON a.pelanggan_id = b.pelanggan_id
+                WHERE a.is_delete=0";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        return $result;
+    }
+
+    function order_data_pending()
+    {
+        $sql = "SELECT 
+                a.*,
+                b.nama 
+                FROM dat_order a
+                LEFT JOIN mst_pelanggan b ON a.pelanggan_id = b.pelanggan_id
+                WHERE a.is_delete=0
+                AND a.status=1";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        return $result;
+    }
+
+    function order_data_process()
+    {
+        $sql = "SELECT 
+                a.*,
+                b.nama 
+                FROM dat_order a
+                LEFT JOIN mst_pelanggan b ON a.pelanggan_id = b.pelanggan_id
+                WHERE a.is_delete=0
+                AND a.status=2";
         $query = $this->db->query($sql);
         $result = $query->result_array();
         return $result;

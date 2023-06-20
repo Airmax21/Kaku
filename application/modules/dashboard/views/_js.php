@@ -1,75 +1,68 @@
-<script type="text/javascript">
-	const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-
-	allSideMenu.forEach(item => {
-		const li = item.parentElement;
-
-		item.addEventListener('click', function() {
-			allSideMenu.forEach(i => {
-				i.parentElement.classList.remove('active');
-			})
-			li.classList.add('active');
-			// $.post('<?= site_url() . '/rajal/pengkajian_awal/ajax/view_tab_menu/' ?>', {
-			// 	view_name: view_name,
-			// 	id: '<?= $main['reg_id'] ?>',
-			// 	asalpasien: '<?= $asalpasien ?>',
-			// 	jenis_pengkajian_id: '<?= @$jenis_pengkajian_id ?>'
-			// }, function(data) {
-			// 	if (data_id != '') {
-			// 		$('#body-' + data_id).html(data.html);
-			// 	} else {
-			// 		$('#body-blank').html(data.html);
-			// 	}
-			// }, 'json');
-		})
-	});
-	// TOGGLE SIDEBAR
-	const menuBar = document.querySelector('#content nav .bx.bx-menu');
-	const sidebar = document.getElementById('sidebar');
-
-	menuBar.addEventListener('click', function() {
-		sidebar.classList.toggle('hide');
-	})
-	const searchButton = document.querySelector('#content nav form .form-input button');
-	const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-	const searchForm = document.querySelector('#content nav form');
-
-	searchButton.addEventListener('click', function(e) {
-		if (window.innerWidth < 576) {
-			e.preventDefault();
-			searchForm.classList.toggle('show');
-			if (searchForm.classList.contains('show')) {
-				searchButtonIcon.classList.replace('bx-search', 'bx-x');
-			} else {
-				searchButtonIcon.classList.replace('bx-x', 'bx-search');
-			}
-		}
-	})
+<script>
+    $(document).ready(function() {
+        $.post('<?= site_url('dashboard/pegawai/ajax') ?>', {
+            view_name: 'dashboard'
+        }, function(data) {
+            $('.btn-side').removeClass('active');
+            $('#btn_dashboard').addClass('active');
+            $('#main').html(data.html);
+        }, 'json');
 
 
+        $('#btn_dashboard').click(function(e) {
+            e.preventDefault();
+            $.post('<?= site_url('dashboard/pegawai/ajax') ?>', {
+                view_name: 'dashboard'
+            }, function(data) {
+                $('.btn-side').removeClass('active');
+                $('#btn_dashboard').addClass('active');
+                $('#main').html(data.html);
+            }, 'json');
+        })
+        $('#btn_kasir').click(function(e) {
+            e.preventDefault();
+            $.post('<?= site_url('dashboard/pegawai/ajax') ?>', {
+                view_name: 'kasir'
+            }, function(data) {
+                $('.btn-side').removeClass('active');
+                $('#btn_kasir').addClass('active');
+                $('#main').html(data.html);
+            }, 'json');
+        })
+        $('#btn_dapur').click(function(e) {
+            e.preventDefault();
+            $.post('<?= site_url('dashboard/pegawai/ajax') ?>', {
+                view_name: 'dapur'
+            }, function(data) {
+                $('.btn-side').removeClass('active');
+                $('#btn_dapur').addClass('active');
+                $('#main').html(data.html);
+            }, 'json');
+        })
+
+        $('.bx-menu').click(function(e) {
+            e.preventDefault();
+            $('#sidebar').toggleClass('hide');
+        })
+
+        $('#switch-mode').change(function(e) {
+            e.preventDefault();
+            if ($(this).is(':checked')) {
+                $('body').addClass('dark')
+            } else {
+                $('body').removeClass('dark')
+            }
+        })
+
+        $(window).on('resize', function(e) {
+            e.preventDefault();
+            if ($(window).width() < 768) {
+                $('#sidebar').addClass('hide');
+            } else {
+                $('#sidebar').removeClass('hide');
+            }
+        })
 
 
-
-	if (window.innerWidth < 768) {
-		sidebar.classList.add('hide');
-	} else if (window.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-
-
-	window.addEventListener('resize', function() {
-		if (this.innerWidth > 576) {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-			searchForm.classList.remove('show');
-		}
-	})
-	const switchMode = document.getElementById('switch-mode');
-	switchMode.addEventListener('change', function() {
-		if (this.checked) {
-			document.body.classList.add('dark');
-		} else {
-			document.body.classList.remove('dark');
-		}
-	})
+    });
 </script>
