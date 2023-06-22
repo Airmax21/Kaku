@@ -40,7 +40,7 @@
             <td><?= $p['meja_id'] ?></td>
             <td><?= 'Rp. ' . number_format($p['grand_total'], 0, ",", ".") ?></td>
             <td>
-            <a href=""><button type="button" class="btn btn-primary btn-lg rounded-pill" style="font-size: x-small;"><b>Detail</b></button></a>
+            <button type="button" class="btn btn-primary btn-lg rounded-pill btn-detail" data-order_id="<?= $p['order_id'] ?>" style="font-size: x-small;"><b>Detail</b></button>
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
@@ -57,3 +57,17 @@
     </table>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.btn-detail').click(function(e){
+      e.preventDefault();
+      var order_id = $(this).attr('data-order_id');
+      $.post('<?= site_url('dashboard/pegawai/ajax_kasir') ?>',{
+        order_id : order_id
+      },function(data){
+        $('#main').html(data.html);
+      },'json')
+    });
+  });
+</script>

@@ -67,11 +67,22 @@ class M_order extends CI_Model
         $data['is_delete'] = 0;
         $this->db->insert('dat_order', $data);
     }
-    function update_order($id)
+    function update_order()
     {
         $data = $this->input->post();
-
-        $this->db->update('dat_order',$data,$id);
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['updated_by'] = $this->cookie['username'];
+        $this->db->where('order_id', $data['order_id']);
+        $this->db->update('dat_order', $data);
+    }
+    function delete_order()
+    {
+        $id = $this->input->post('order_id');
+        $data['deleted_at'] = date('Y-m-d H:i:s');
+        $data['deleted_by'] = $this->cookie['username'];
+        $data['is_delete'] = 1;
+        $this->db->where('order_id', $id);
+        $this->db->update('dat_order', $data);
     }
     function count()
     {

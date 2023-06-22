@@ -25,7 +25,7 @@
           <th>User</th>
           <th>Date Order</th>
           <th>No. Meja</th>
-          <th>Total Harga</th>
+          <th>Item</th>
           <th>Aksi</th>
           <th>Status</th>
         </tr>
@@ -34,13 +34,21 @@
         <?php foreach ($main as $p) : ?>
           <tr>
             <td>
-              <p><?= $p['nama'] != null ? $p['nama'] : $p['pelanggan_nm'] ?></p>
+              <?= $p['nama'] != null ? $p['nama'] : $p['pelanggan_nm'] ?>
             </td>
             <td><?= date('d-m-Y', strtotime($p['tgl_pesan'])) ?></td>
             <td><?= $p['meja_id'] ?></td>
-            <td><?= 'Rp. ' . number_format($p['grand_total'], 0, ",", ".") ?></td>
             <td>
-            <a href=""><button type="button" class="btn btn-primary btn-lg rounded-pill" style="font-size: x-small;"><b>Detail</b></button></a>
+              <ul>
+              <?php
+              $item = $this->m_detail_order->detail_order_data($p['order_id']); 
+              foreach ($item as $o) : ?>
+                <li ><?= $o['menu_nm'] ?> &nbsp;&nbsp;<?= $o['jumlah'] ?></li>
+              <?php endforeach; ?>
+              </ul>
+            </td>
+            <td>
+            <a href=""><button type="button" class="btn btn-success btn-lg rounded-pill" style="font-size: x-small;"><b>Selesai</b></button></a>
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
