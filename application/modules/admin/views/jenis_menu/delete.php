@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action=<?php echo site_url('admin/menu/delete') ?> method="post" enctype="multipart/form-data">
+            <form action=<?php echo site_url('admin/jenis_menu/delete') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">ID Jenis Menu</label>
