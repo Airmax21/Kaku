@@ -73,7 +73,6 @@
                         </button>
                       </td>
                       <?php 
-                      $data['role'] = $role;
                       $data['pelanggan'] = $p;
                       $this->load->view('update', $data);
                       ?>

@@ -48,7 +48,7 @@
               </ul>
             </td>
             <td>
-            <a href=""><button type="button" class="btn btn-success btn-lg rounded-pill" style="font-size: x-small;"><b>Selesai</b></button></a>
+            <button type="button" id="btn_selesai" class="btn btn-success btn-lg rounded-pill" style="font-size: x-small;"><b>Selesai</b></button>
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
@@ -65,3 +65,15 @@
     </table>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $('#btn_selesai').click((e) =>{
+      e.preventDefault();
+      $.post('<?= site_url('dashboard/pegawai/ajax_dapur') ?>',{
+        order_id : order_id
+      },function(data){
+        $('#main').html(data.html);
+      },'json')
+    })
+  })
+</script>
