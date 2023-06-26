@@ -65,4 +65,34 @@ class M_app extends CI_Model
         );
         $CI->input->set_cookie($cookie);
     }
+
+    function send_email($to,$subjek,$msg){
+        $this->load->library('phpmailer_lib');
+
+        // PHPMailer object
+        $mail = $this->phpmailer_lib->load();
+
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'iqbal.agyan@students.amikom.ac.id';
+        $mail->Password = 'iqbalagy';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        // Konfigurasi email
+        $mail->setFrom('iqbal.agyan@students.amikom.ac.id');
+        $mail->addAddress($to);
+        $mail->Subject = $subjek;
+        $mail->isHTML(true);
+        $mail->Body = $msg;
+
+        // Kirim email
+        if ($mail->send()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
