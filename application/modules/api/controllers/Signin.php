@@ -15,6 +15,9 @@ class Signin extends MY_Controller
         $cek = $this->m_pelanggan->login();
         if ($cek) {
             $data = array(
+                'username' => $cek['username'],
+                'id' => $cek['pelanggan_id'],
+                'fullname' => $cek['fullname'],
                 'status' => 'berhasil'
             );
             $this->output
