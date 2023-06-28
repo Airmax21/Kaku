@@ -17,7 +17,7 @@ class Signin extends MY_Controller
             $data = array(
                 'username' => $cek['username'],
                 'id' => $cek['pelanggan_id'],
-                'fullname' => $cek['fullname'],
+                'fullname' => $cek['nama'],
                 'status' => 'berhasil'
             );
             $this->output
