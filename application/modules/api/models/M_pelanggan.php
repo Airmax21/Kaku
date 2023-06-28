@@ -85,6 +85,24 @@ class M_pelanggan extends CI_Model
         $this->db->where('pelanggan_id', $id);
         $this->db->update('mst_pelanggan', $data);
     }
+    function login()
+    {
+        $data = $this->input->post();
+        $pass = $this->encrypt->decode($this->get_pass($data['username']));
+        if($pass == $data['pass'])
+        {
+            $sql = "SELECT
+                    *
+                    FROM mst_pelanggan
+                    WHERE username = ?
+                    AND is_delete=0";
+            $query = $this->db->query($sql, array($data['username']));
+            $result = $query->row_array();
+            if($result != NULL) return $result;
+            else return false;
+        }
+        else return false;
+    }
     function get_pass($username)
     {
         $sql = "SELECT
@@ -146,7 +164,7 @@ class M_pelanggan extends CI_Model
                 AND username = ?
                 AND is_used = 0 
                 AND is_delete=0";
-        $query = $this->db->query($sql, array($data['kode_otp'],$data['username']));
+        $query = $this->db->query($sql, array($data['kode_otp'], $data['username']));
         $result = $query->row_array();
         if ($result != null) {
             $d['is_used'] = 1;
@@ -155,16 +173,38 @@ class M_pelanggan extends CI_Model
             $d['is_delete'] = 0;
             $this->db->where('kode_otp', $data['kode_otp']);
             $this->db->where('username', $data['username']);
-            $this->db->where('is_used',0);
+            $this->db->where('is_used', 0);
             $this->db->update('dat_otp', $d);
             $da['is_active'] = 1;
             $d['updated_at'] = date('Y-m-d H:i:s');
             $d['updated_by'] = $this->cookie['username'];
             $d['is_delete'] = 0;
-            $this->db->where('username',$data['username']);
+            $this->db->where('username', $data['username']);
             $this->db->update('mst_pelanggan', $d);
             return true;
         } else return false;
+    }
+    function exp_otp()
+    {
+        $data = $this->input->post();
+        $data['deleted_at'] = date('Y-m-d H:i:s');
+        $data['deleted_by'] = $this->cookie['username'];
+        $data['is_delete'] = 1;
+        $this->db->where('username', $data['username']);
+        $this->db->update('dat_otp', $data);
+    }
+    function resend_otp()
+    {
+        $data = $this->input->post();
+        $kode = random_int(1000, 9999);
+        $this->kirim_otp($data['email'], $data['username'], $kode);
+        $d['username'] = $data['username'];
+        $d['kode_otp'] = $kode;
+        $d['created_at'] = date('Y-m-d H:i:s');
+        $d['created_by'] = $this->cookie['username'];
+        $d['is_used'] = 0;
+        $d['is_delete'] = 0;
+        $this->db->insert('dat_otp', $d);
     }
     function kirim_otp($email, $username, $kode)
     {

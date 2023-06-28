@@ -26,8 +26,7 @@ class Signup extends MY_Controller
                 ->set_status_header(200)
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
-        }
-        else {
+        } else {
             $data = array(
                 'status' => 'gagal'
             );
@@ -48,8 +47,7 @@ class Signup extends MY_Controller
                 ->set_status_header(200)
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
-        }
-        else {
+        } else {
             $data = array(
                 'status' => 'gagal'
             );
@@ -58,5 +56,27 @@ class Signup extends MY_Controller
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+    }
+    public function exp_otp()
+    {
+        $this->m_pelanggan->exp_otp();
+        $data = array(
+            'status' => 'berhasil'
+        );
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+    }
+    public function resend_otp()
+    {
+        $this->m_pelanggan->resend_otp();
+        $data = array(
+            'status' => 'berhasil'
+        );
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
     }
 }
