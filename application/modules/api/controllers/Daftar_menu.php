@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Favorite_menu extends MY_Controller
+class Daftar_menu extends MY_Controller
 {
     public function __construct()
     {
