@@ -37,7 +37,7 @@
               <?= $p['nama'] != null ? $p['nama'] : $p['pelanggan_nm'] ?>
             </td>
             <td><?= date('d-m-Y', strtotime($p['tgl_pesan'])) ?></td>
-            <td><?= $p['meja_id'] ?></td>
+            <td><?= $p['meja_id'] . $p['order_id'] ?></td>
             <td>
               <ul>
               <?php
