@@ -70,6 +70,7 @@
     $('#btn_selesai').click((e) =>{
       e.preventDefault();
       var order_id = $(this).attr('data-order-id');
+      console.log(order_id);
       $.post('<?= site_url('dashboard/pegawai/ajax_dapur') ?>',{
         order_id : order_id,
         status: 0
