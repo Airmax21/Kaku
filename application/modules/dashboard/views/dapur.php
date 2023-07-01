@@ -40,14 +40,16 @@
             <td><?= $p['meja_id'] . $p['order_id'] ?></td>
             <td>
               <ul>
-              <?php
-              $item = $this->m_detail_order->detail_order_data($p['order_id']); 
-              foreach ($item as $o) : ?>
-                <li ><?= $o['menu_nm'] ?> &nbsp;&nbsp;<?= $o['jumlah'] ?></li>
-              <?php endforeach; ?>
+                <?php
+                $item = $this->m_detail_order->detail_order_data($p['order_id']);
+                foreach ($item as $o) : ?>
+                  <li><?= $o['menu_nm'] ?> &nbsp;&nbsp;<?= $o['jumlah'] ?></li>
+                <?php endforeach; ?>
               </ul>
             </td>
             <td>
+              <button type="button" class="btn btn-success btn-lg rounded-pill btn-selesai" href="javascript:void(0)" data-order-id="123" style="font-size: x-small;"><b>Selesai</b></button>
+
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
@@ -62,21 +64,20 @@
         <?php endforeach; ?>
       </tbody>
     </table>
-    <button type="button" id="btn_selesai" class="btn btn-success btn-lg rounded-pill" href="javascript:void(0)" data-order-id="123" style="font-size: x-small;"><b>Selesai</b></button>
   </div>
 </div>
 <script>
-  $(document).ready(function(){
-    $('#btn_selesai').click(function (e) {
+  $(document).ready(function() {
+    $('.btn-selesai').click(function(e) {
       e.preventDefault();
       var order_id = $(this).attr('data-order-id');
       console.log(order_id);
-      $.post('<?= site_url('dashboard/pegawai/ajax_dapur') ?>',{
-        order_id : order_id,
+      $.post('<?= site_url('dashboard/pegawai/ajax_dapur') ?>', {
+        order_id: order_id,
         status: 0
-      },function(data){
+      }, function(data) {
         $('#main').html(data.html);
-      },'json')
+      }, 'json')
     })
   })
 </script>
