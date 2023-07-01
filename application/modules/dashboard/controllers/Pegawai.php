@@ -70,4 +70,13 @@ class Pegawai extends MY_Controller
             'html' => $this->load->view('dashboard/kasir', $data, true)
         ));
     }
+
+    public function ajax_dapur()
+    {
+        $this->m_order->update_order();
+        $data['main'] = $this->m_order->order_data_process();
+        echo json_encode(array(
+            'html' => $this->load->view('dashboard/kasir', $data, true)
+        ));
+    }
 }

@@ -70,7 +70,8 @@
     $('#btn_selesai').click((e) =>{
       e.preventDefault();
       $.post('<?= site_url('dashboard/pegawai/ajax_dapur') ?>',{
-        order_id : order_id
+        order_id : order_id,
+        status: 0
       },function(data){
         $('#main').html(data.html);
       },'json')
