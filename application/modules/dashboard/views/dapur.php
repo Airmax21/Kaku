@@ -48,7 +48,7 @@
               </ul>
             </td>
             <td>
-            <button type="button"  data-order-id="<?= $p['order_id'] ?>" class="btn btn-success btn-lg rounded-pill btn_selesai" style="font-size: x-small;"><b>Selesai</b></button>
+            <button type="button"  data-order-id="123" class="btn btn-success btn-lg rounded-pill btn_selesai" style="font-size: x-small;"><b>Selesai</b></button>
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
