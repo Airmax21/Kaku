@@ -67,7 +67,7 @@
 </div>
 <script>
   $(document).ready(function(){
-    $('#btn-selesai').click((e) =>{
+    $('#btn_selesai').click((e) =>{
       e.preventDefault();
       var order_id = $('#btn_selesai').attr('data-order-id');
       console.log(order_id);
