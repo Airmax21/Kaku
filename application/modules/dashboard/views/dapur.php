@@ -48,7 +48,6 @@
               </ul>
             </td>
             <td>
-            <button type="button" class="btn btn-success btn-lg rounded-pill btn_selesai" href="javascript:void(0)" data-order-id="123" style="font-size: x-small;"><b>Selesai</b></button>
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
@@ -63,11 +62,12 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+    <button type="button" class="btn btn-success btn-lg rounded-pill btn-selesai" href="javascript:void(0)" data-order-id="123" style="font-size: x-small;"><b>Selesai</b></button>
   </div>
 </div>
 <script>
   $(document).ready(function(){
-    $('.btn_selesai').click((e) =>{
+    $('.btn-selesai').click((e) =>{
       e.preventDefault();
       var order_id = $(this).data('order-id');
       console.log(order_id);
