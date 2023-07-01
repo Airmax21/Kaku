@@ -48,7 +48,7 @@
               </ul>
             </td>
             <td>
-            <button type="button" id="btn_selesai" class="btn btn-success btn-lg rounded-pill" style="font-size: x-small;"><b>Selesai</b></button>
+            <button type="button" id="btn_selesai" data-order-id="<?= $p['order_id'] ?>" class="btn btn-success btn-lg rounded-pill" style="font-size: x-small;"><b>Selesai</b></button>
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
@@ -69,6 +69,7 @@
   $(document).ready(function(){
     $('#btn_selesai').click((e) =>{
       e.preventDefault();
+      var order_id = $(this).attr('data-order-id');
       $.post('<?= site_url('dashboard/pegawai/ajax_dapur') ?>',{
         order_id : order_id,
         status: 0
