@@ -48,7 +48,7 @@
               </ul>
             </td>
             <td>
-              <button type="button" class="btn btn-success btn-lg rounded-pill btn-selesai" href="javascript:void(0)" data-order-id="123" style="font-size: x-small;"><b>Selesai</b></button>
+              <button type="button" class="btn btn-success btn-lg rounded-pill btn-selesai" href="javascript:void(0)" data-order-id="<?= $p['order_id'] ?>" style="font-size: x-small;"><b>Selesai</b></button>
 
             </td>
             <td>
