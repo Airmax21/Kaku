@@ -48,7 +48,7 @@
               </ul>
             </td>
             <td>
-            <button type="button" id="btn_selesai" data-order-id="<?= $p['order_id'] ?>" class="btn btn-success btn-lg rounded-pill" style="font-size: x-small;"><b>Selesai</b></button>
+            <button type="button"  data-order-id="<?= $p['order_id'] ?>" class="btn btn-success btn-lg rounded-pill btn_selesai" style="font-size: x-small;"><b>Selesai</b></button>
             </td>
             <td>
               <?php if ($p['status'] == 1) : ?>
@@ -67,7 +67,7 @@
 </div>
 <script>
   $(document).ready(function(){
-    $('#btn_selesai').click((e) =>{
+    $('.btn_selesai').click((e) =>{
       e.preventDefault();
       var order_id = $(this).attr('data-order-id');
       console.log(order_id);
