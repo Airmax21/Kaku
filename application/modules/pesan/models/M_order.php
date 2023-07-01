@@ -48,13 +48,19 @@ class M_order extends CI_Model
     function pesan_meja($id)
     {
         $d = $this->input->post();
+        if($d['username'] == null) return null;
         $data['meja_id'] = $id;
         $pelanggan = $this->m_pelanggan->get_pelanggan_username($d['username']);
         $data['pelanggan_id'] =  $pelanggan['pelanggan_id'];
+        $data['status'] = 1;
         $data['tgl_pesan'] = date('Y-m-d H:i:s');
+        $order = $this->get_order_pelanggan($data['pelanggan_id'],$data['tgl_pesan']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['created_by'] = $this->cookie['username'];
         $data['is_delete'] = 0;
+        if($order || $order['status'] != 0) {
+            return null;
+        }
         $this->db->insert('dat_order', $data);
         return $this->get_order_pelanggan($data['pelanggan_id'],$data['tgl_pesan']);
     }
