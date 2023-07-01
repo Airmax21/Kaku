@@ -44,6 +44,16 @@ class M_order extends CI_Model
         $result = $query->row_array();
         return $result;
     }
+    function get_order_pelanggan_id($pelanggan_id)
+    {
+        $sql = "SELECT 
+                * 
+                FROM dat_order
+                WHERE pelanggan_id = ?";
+        $query = $this->db->query($sql,array($pelanggan_id));
+        $result = $query->result_array();
+        return $result;
+    }
 
     function pesan_meja($id)
     {
@@ -54,11 +64,11 @@ class M_order extends CI_Model
         $data['pelanggan_id'] =  $pelanggan['pelanggan_id'];
         $data['status'] = 1;
         $data['tgl_pesan'] = date('Y-m-d H:i:s');
-        $order = $this->get_order_pelanggan($data['pelanggan_id'],$data['tgl_pesan']);
+        $order = $this->get_order_pelanggan_id($data['pelanggan_id']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['created_by'] = $this->cookie['username'];
         $data['is_delete'] = 0;
-        if($order || $order['status'] != 0) {
+        if($order[sizeof($order)-1]['status'] != 0) {
             return null;
         }
         $this->db->insert('dat_order', $data);
