@@ -62,14 +62,14 @@
         <?php endforeach; ?>
       </tbody>
     </table>
-    <button type="button" class="btn btn-success btn-lg rounded-pill btn-selesai" href="javascript:void(0)" data-order-id="123" style="font-size: x-small;"><b>Selesai</b></button>
+    <button type="button" id="btn_selesai" class="btn btn-success btn-lg rounded-pill" href="javascript:void(0)" data-order-id="123" style="font-size: x-small;"><b>Selesai</b></button>
   </div>
 </div>
 <script>
   $(document).ready(function(){
-    $('.btn-selesai').click((e) =>{
+    $('#btn-selesai').click((e) =>{
       e.preventDefault();
-      var order_id = $(this).data('order-id');
+      var order_id = $('#btn_selesai').attr('data-order-id');
       console.log(order_id);
       $.post('<?= site_url('dashboard/pegawai/ajax_dapur') ?>',{
         order_id : order_id,
