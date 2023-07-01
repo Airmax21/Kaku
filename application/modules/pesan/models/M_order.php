@@ -69,7 +69,7 @@ class M_order extends CI_Model
         $data['created_by'] = $this->cookie['username'];
         $data['is_delete'] = 0;
         if($order[sizeof($order)-1]['status'] != 0) {
-            return null;
+            return $order[sizeof($order)-1];
         }
         $this->db->insert('dat_order', $data);
         return $this->get_order_pelanggan($data['pelanggan_id'],$data['tgl_pesan']);
