@@ -10,8 +10,9 @@ class M_detail_order extends CI_Model
         ));
     }
 
-    function detail_order_data($id)
+    function detail_order_data()
     {
+        $data = $this->input->post();
         $sql = "SELECT 
                 a.*,
                 b.*,
@@ -23,7 +24,7 @@ class M_detail_order extends CI_Model
                 ON a.menu_id = c.menu_id
                 WHERE a.is_delete=0
                 AND a.order_id = ?";
-        $query = $this->db->query($sql, array($id));
+        $query = $this->db->query($sql, array($data['order_id']));
         $result = $query->result_array();
         return $result;
     }
