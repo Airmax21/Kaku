@@ -21,7 +21,7 @@ class Jenismenu extends MY_Controller
         $header['title'] = 'Admin Jenis Menu'; 
         $main['jenis_menu'] = $this->m_jenis_menu->jenis_data(); 
         $this->load->view('_header',$header);
-        $this->load->view('jenis_menu/index',$main);
+        $this->load->view('jenismenu/index',$main);
     }
 
     public function tambah()
