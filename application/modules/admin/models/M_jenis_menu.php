@@ -22,7 +22,7 @@ class M_jenis_menu extends CI_Model
         $sql = "SELECT 
                 * 
                 FROM mst_jenis_menu
-                WHERE menu_id = ?";
+                WHERE jenis_id = ?";
         $query = $this->db->query($sql,array($id));
         $result = $query->row_array();
         return $result;
@@ -52,7 +52,7 @@ class M_jenis_menu extends CI_Model
         $data = $this->input->post();
         $data['updated_at'] = date('Y-m-d H:i:s');
         $data['updated_by'] = $this->cookie['username'];
-        $this->db->where('menu_id', $data['menu_id']);
+        $this->db->where('jenis_id', $data['menu_id']);
         $this->db->update('mst_jenis_menu', $data);
     }
     function delete_jenis()
@@ -61,7 +61,7 @@ class M_jenis_menu extends CI_Model
         $data['deleted_at'] = date('Y-m-d H:i:s');
         $data['deleted_by'] = $this->cookie['username'];
         $data['is_delete'] = 1;
-        $this->db->where('menu_id', $id);
+        $this->db->where('jenis_id', $id);
         $this->db->update('mst_jenis_menu', $data);
     }
 }

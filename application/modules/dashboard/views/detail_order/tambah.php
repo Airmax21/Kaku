@@ -1,4 +1,4 @@
-<div class="modal fade " id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalUpdateTitle" aria-hidden="true">
+<div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalUpdateTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action=<?php echo site_url('admin/detail_order/tambah') ?> method="post" enctype="multipart/form-data">
+            <form action="javascript:void(0)" id="tambah" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <input type="hidden" name="order_id" value="<?= $order_id ?>">
                     <div class="form-group">
@@ -35,3 +35,16 @@
         </div>
     </div>
 </div>
+<!-- <script>
+    $(document).ready(function() {
+        $('#tambah').submit(function(e) {
+            e.preventDefault();
+            $('#modalTambah').modal('toggle');
+            $.post('<?= site_url('dashboard/pegawai/tambah_order') ?>',
+                $(this).serialize(),
+                function(data) {
+                    $('#main').html(data.html);
+                }, 'json');
+        });
+    })
+</script> -->

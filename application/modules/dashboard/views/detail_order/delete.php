@@ -9,33 +9,22 @@
             </div>
             <form action=<?php echo site_url('admin/order/delete') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
+                    <input type="hidden" name="order_id" value="<?= $order_id ?>">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ID Order</label>
-                        <input type="text" name="detail_order_id" readonly class="form-control" value="<?= $detail_order_id ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Pelanggan</label>
-                        <input type="text" name="pelanggan_nm" readonly class="form-control" placeholder="Masukkan Nama" value="<?= $nama != null ? $nama : $pelanggan_nm ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">No Meja</label>
-                        <input type="text" class="form-control" readonly name="meja_id" placeholder="Masukkan No Meja" value="<?= $meja_id ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Total Harga</label>
-                        <input type="text" class="form-control" readonly name="fullname" placeholder="Masukkan Total Harga" value="<?= $grand_total ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Status</label>
-                        <select name="status" readonly class="form-control">
-                            <option value="1" <?php if($status == 1) echo 'selected' ?>>Belum Bayar</option>
-                            <option value="2" <?php if($status == 2) echo 'selected' ?>>Proses</option>
-                            <option value="0" <?php if($status == 0) echo 'selected' ?>>Selesai</option>
+                        <label for="exampleInputEmail1">Nama Menu</label>
+                        <select name="menu_id" class="form-control">
+                            <?php foreach ($menu as $r) : ?>
+                                <option value="<?= $r['menu_id'] ?>" <?php $r['menu_id'] == $menu_id ? 'selected' : '' ?>><?= $r['menu_nm'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1">Jumlah</label>
+                        <input type="text" class="form-control" name="jumlah" placeholder="Masukkan Jumlah" value="<?= $jumlah ?>">
+                    </div>
+                    <div class="form-group">
                         <label>Tanggal Pemesanan</label>
-                        <input type="datetime-local" readonly name="tgl_pesan" id="tgl_pesan" class="form-control" value="<?= $tgl_pesan ?>">
+                        <input type="datetime-local" name="tgl_pesan" id="tgl_pesan" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">

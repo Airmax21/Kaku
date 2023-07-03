@@ -56,8 +56,8 @@
                 </button>
               </td>
             </tr>
-            <?php $this->load->view('detail_order/update', $o) ?>
-            <?php $this->load->view('detail_order/delete', $o) ?>
+            <?php $this->load->view('detail_order/update',$o) ?>
+            <?php $this->load->view('detail_order/delete',$o) ?>
           <?php
             $jumlah += $o['jumlah'] * $o['harga'];
           endforeach; ?>
@@ -92,7 +92,7 @@
             </tr>
             <tr>
               <td>Bayar : </td>
-              <td>Rp. <input class="inptext" type="text" name="pembayaran" id="pembayaran" size="10"></td>
+              <td>Rp. <input class="inptext" style="color: #343A40;" type="text" name="pembayaran" id="pembayaran" size="10"></td>
             </tr>
             <tr>
               <td>Kembalian :</td>

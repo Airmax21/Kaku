@@ -37,7 +37,7 @@ class Pegawai extends MY_Controller
         $post = $this->input->post();
         if ($post['view_name'] == 'dashboard') {
             $data['count'] = $this->m_order->count();
-            $data['main'] = $this->m_order->order_data();  
+            $data['main'] = $this->m_order->order_data();
         }
         if ($post['view_name'] == 'kasir') {
             $data['main'] = $this->m_order->order_data_pending();
@@ -77,6 +77,43 @@ class Pegawai extends MY_Controller
         $data['main'] = $this->m_order->order_data_process();
         echo json_encode(array(
             'html' => $this->load->view('dashboard/dapur', $data, true)
+        ));
+    }
+
+    public function tambah_order()
+    {
+        $post = $this->input->post();
+        $this->m_detail_order->create_detail_order();
+        $data['main'] = $this->m_detail_order->detail_order_data($post['order_id']);
+        $data['order_id'] = $post['order_id'];
+        $data['order'] = $this->m_order->get_order($post['order_id']);
+        $data['menu']['menu'] = $this->m_menu->menu_data();
+        echo json_encode(array(
+            'html' => $this->load->view('dashboard/detail_kasir', $data, true)
+        ));
+    }
+    public function update_order()
+    {
+        $post = $this->input->post();
+        $this->m_detail_order->update_detail_order();
+        $data['main'] = $this->m_detail_order->detail_order_data($post['order_id']);
+        $data['order_id'] = $post['order_id'];
+        $data['order'] = $this->m_order->get_order($post['order_id']);
+        $data['menu']['menu'] = $this->m_menu->menu_data();
+        echo json_encode(array(
+            'html' => $this->load->view('dashboard/detail_kasir', $data, true)
+        ));
+    }
+    public function delete_order()
+    {
+        $post = $this->input->post();
+        $this->m_detail_order->delete_detail_order();
+        $data['main'] = $this->m_detail_order->detail_order_data($post['order_id']);
+        $data['order_id'] = $post['order_id'];
+        $data['order'] = $this->m_order->get_order($post['order_id']);
+        $data['menu']['menu'] = $this->m_menu->menu_data();
+        echo json_encode(array(
+            'html' => $this->load->view('dashboard/detail_kasir', $data, true)
         ));
     }
 }

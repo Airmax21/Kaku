@@ -9,6 +9,7 @@
             </div>
             <form action=<?php echo site_url('admin/detail_order/delete') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
+                    <input type="hidden" name="detail_order_id" value="<?= $detail_order_id ?>">
                     <input type="hidden" name="order_id" value="<?= $order_id ?>">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Menu</label>
