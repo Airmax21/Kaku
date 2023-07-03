@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class DetailOrder extends MY_Controller
+class Detailorder extends MY_Controller
 {
     var $cookie;
     public function __construct()
