@@ -60,7 +60,7 @@
                       </td>
                       <td><?= $o['tgl_pesan'] ?></td>
                       <td>
-                        <a href="<?= site_url('admin/detail_order/order') . '/' . $o['order_id'] ?>">
+                        <a href="<?= site_url('admin/detailorder/order') . '/' . $o['order_id'] ?>">
                           <button type="button" class="btn btn-primary">
                             Detail
                           </button>

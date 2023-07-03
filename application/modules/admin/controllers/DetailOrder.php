@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Detail_Order extends MY_Controller
+class DetailOrder extends MY_Controller
 {
     var $cookie;
     public function __construct()
@@ -33,20 +33,20 @@ class Detail_Order extends MY_Controller
     {
         $id = $this->input->post('order_id');
         $this->m_detail_order->create_detail_order();
-        redirect('admin/detail_order/order/' . $id);
+        redirect('admin/detailorder/order/' . $id);
     }
 
     public function update()
     {
         $id = $this->input->post('order_id');
         $this->m_detail_order->update_detail_order();
-        redirect('admin/detail_order/order/' . $id);
+        redirect('admin/detailorder/order/' . $id);
     }
     public function delete()
     {
         $id = $this->input->post('order_id');
         $this->m_detail_order->delete_detail_order();
-        redirect('admin/detail_order/order/' . $id);
+        redirect('admin/detailorder/order/' . $id);
     }
 
 }

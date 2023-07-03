@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Jenis_Menu extends MY_Controller
+class JenisMenu extends MY_Controller
 {
     var $cookie;
     public function __construct()

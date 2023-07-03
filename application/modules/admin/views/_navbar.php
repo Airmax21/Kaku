@@ -14,7 +14,7 @@
         <a href="<?= site_url('admin/pelanggan') ?>" class="nav-link">Pelanggan</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('admin/jenis_menu') ?>" class="nav-link">Jenis Menu</a>
+        <a href="<?= site_url('admin/jenismenu') ?>" class="nav-link">Jenis Menu</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?= site_url('admin/menu') ?>" class="nav-link">Menu</a>
@@ -77,7 +77,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= site_url('admin/jenis_menu') ?>" class="nav-link">
+            <a href="<?= site_url('admin/jenismenu') ?>" class="nav-link">
               <p>
                 Jenis Menu
               </p>
