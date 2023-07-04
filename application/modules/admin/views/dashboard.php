@@ -100,7 +100,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href=<?php echo site_url('admin/order_cetakpdf'); ?>>
+                            <a href=<?php echo site_url('admin/cetak/harian'); ?>>
                                 <button type="button" class="btn btn-primary">
                                     Export PDF
                                 </button>

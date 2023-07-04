@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action=<?php echo site_url('admin/detail_order/delete') ?> method="post" enctype="multipart/form-data">
+            <form action=<?php echo site_url('admin/detailorder/delete') ?> method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <input type="hidden" name="detail_order_id" value="<?= $detail_order_id ?>">
                     <input type="hidden" name="order_id" value="<?= $order_id ?>">

@@ -20,6 +20,21 @@ class M_order extends CI_Model
         $result = $query->result_array();
         return $result;
     }
+    function order_data_harian()
+    {
+        $date = date('Y-m-d');
+        $sql = "SELECT 
+                a.*,
+                b.nama 
+                FROM dat_order a
+                LEFT JOIN mst_pelanggan b 
+                ON a.pelanggan_id = b.pelanggan_id
+                WHERE a.is_delete=0
+                AND (a.tgl_pesan BETWEEN '$date 00:00:00' AND '$date 23:59:59')";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        return $result;
+    }
     function get_order($id)
     {
         $sql = "SELECT 
