@@ -35,7 +35,7 @@
         </div>
     </div>
 </div>
-<!-- <script>
+<script>
     $(document).ready(function() {
         $('#tambah').submit(function(e) {
             e.preventDefault();
@@ -47,4 +47,4 @@
                 }, 'json');
         });
     })
-</script> -->
+</script>
