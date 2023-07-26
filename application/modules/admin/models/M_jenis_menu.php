@@ -52,12 +52,12 @@ class M_jenis_menu extends CI_Model
         $data = $this->input->post();
         $data['updated_at'] = date('Y-m-d H:i:s');
         $data['updated_by'] = $this->cookie['username'];
-        $this->db->where('jenis_id', $data['menu_id']);
+        $this->db->where('jenis_id', $data['jenis_id']);
         $this->db->update('mst_jenis_menu', $data);
     }
     function delete_jenis()
     {
-        $id = $this->input->post('menu_id');
+        $id = $this->input->post('jenis_id');
         $data['deleted_at'] = date('Y-m-d H:i:s');
         $data['deleted_by'] = $this->cookie['username'];
         $data['is_delete'] = 1;

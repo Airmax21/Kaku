@@ -27,18 +27,18 @@ class Jenismenu extends MY_Controller
     public function tambah()
     {
         $this->m_jenis_menu->create_jenis();
-        redirect('admin/jenis_menu');
+        redirect('admin/jenismenu');
     }
 
     public function update()
     {
         $this->m_jenis_menu->update_jenis();
-        redirect('admin/jenis_menu');
+        redirect('admin/jenismenu');
     }
     public function delete()
     {
         $this->m_jenis_menu->delete_jenis();
-        redirect('admin/jenis_menu');
+        redirect('admin/jenismenu');
     }
 
 }
