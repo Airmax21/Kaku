@@ -53,5 +53,5 @@
                     $('#main').html(data.html);
                 }, 'json');
         });
-    })
+    });
 </script>
