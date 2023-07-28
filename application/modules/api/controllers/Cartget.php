@@ -7,7 +7,8 @@ class Cartget extends MY_Controller
         // Load the constructer from MY_Controller
         parent::__construct();
         $this->load->model(array(
-            'm_detail_order'
+            'm_detail_order',
+            'm_order'
         ));
     }
     function index()
