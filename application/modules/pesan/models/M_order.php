@@ -62,7 +62,7 @@ class M_order extends CI_Model
         $data['meja_id'] = $id;
         $pelanggan = $this->m_pelanggan->get_pelanggan_username($d['username']);
         $data['pelanggan_id'] =  $pelanggan['pelanggan_id'];
-        $data['status'] = 1;
+        $data['status'] = 0;
         $data['tgl_pesan'] = date('Y-m-d H:i:s');
         $order = $this->get_order_pelanggan_id($data['pelanggan_id']);
         $data['created_at'] = date('Y-m-d H:i:s');

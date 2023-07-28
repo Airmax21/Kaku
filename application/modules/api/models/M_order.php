@@ -56,6 +56,15 @@ class M_order extends CI_Model
         $this->db->where('order_id', $id);
         $this->db->update('dat_order', $data);
     }
+    function checkout()
+    {
+        $id = $this->input->post('order_id');
+        $data['status'] = 1;
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['updated_by'] = $this->cookie['username'];
+        $this->db->where('order_id', $id);
+        $this->db->update('dat_order', $data);
+    }
     function count()
     {
         $sql = "SELECT 

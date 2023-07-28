@@ -18,4 +18,13 @@ class Cartget extends MY_Controller
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
     }
+    function checkout()
+    {
+        $this->m_order->checkout();
+        $data['status'] = 'berhasil';
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+    }
 }
