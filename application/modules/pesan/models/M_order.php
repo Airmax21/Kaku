@@ -68,7 +68,7 @@ class M_order extends CI_Model
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['created_by'] = $this->cookie['username'];
         $data['is_delete'] = 0;
-        if($order[sizeof($order)-1]['status'] != 0) {
+        if($order[sizeof($order)-1]['status'] != -1) {
             return $order[sizeof($order)-1];
         }
         $this->db->insert('dat_order', $data);
