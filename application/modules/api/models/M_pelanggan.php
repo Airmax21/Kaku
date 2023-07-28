@@ -176,11 +176,11 @@ class M_pelanggan extends CI_Model
             $this->db->where('is_used', 0);
             $this->db->update('dat_otp', $d);
             $da['is_active'] = 1;
-            $d['updated_at'] = date('Y-m-d H:i:s');
-            $d['updated_by'] = $this->cookie['username'];
-            $d['is_delete'] = 0;
+            $da['updated_at'] = date('Y-m-d H:i:s');
+            $da['updated_by'] = $this->cookie['username'];
+            $da['is_delete'] = 0;
             $this->db->where('username', $data['username']);
-            $this->db->update('mst_pelanggan', $d);
+            $this->db->update('mst_pelanggan', $da);
             return true;
         } else return false;
     }
