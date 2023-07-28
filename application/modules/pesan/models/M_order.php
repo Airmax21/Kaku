@@ -49,7 +49,8 @@ class M_order extends CI_Model
         $sql = "SELECT 
                 * 
                 FROM dat_order
-                WHERE pelanggan_id = ?";
+                WHERE pelanggan_id = ?
+                AND is_delete=0";
         $query = $this->db->query($sql,array($pelanggan_id));
         $result = $query->result_array();
         return $result;
