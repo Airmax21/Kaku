@@ -26,7 +26,7 @@ class Detailorder extends MY_Controller
         $main['order'] = $this->m_order->get_order($id);
         $main['menu']['menu'] = $this->m_menu->menu_data(); 
         $this->load->view('_header',$header);
-        $this->load->view('detail_order/index',$main);
+        $this->load->view('detailorder/index',$main);
     }
 
     public function tambah()
