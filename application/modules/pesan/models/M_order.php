@@ -62,13 +62,13 @@ class M_order extends CI_Model
         $data['meja_id'] = $id;
         $pelanggan = $this->m_pelanggan->get_pelanggan_username($d['username']);
         $data['pelanggan_id'] =  $pelanggan['pelanggan_id'];
-        $data['status'] = 0;
+        $data['status'] = 3;
         $data['tgl_pesan'] = date('Y-m-d H:i:s');
         $order = $this->get_order_pelanggan_id($data['pelanggan_id']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['created_by'] = $this->cookie['username'];
         $data['is_delete'] = 0;
-        if($order[sizeof($order)-1]['status'] != -1) {
+        if($order[sizeof($order)-1]['status'] != 0) {
             return $order[sizeof($order)-1];
         }
         $this->db->insert('dat_order', $data);
