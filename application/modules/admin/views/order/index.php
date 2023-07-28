@@ -56,7 +56,6 @@
                           <span class="badge badge-warning">Diproses</span>
                         <?php elseif ($o['status'] == 0) : ?>
                           <span class="badge badge-success">Sudah Selesai</span>
-                        <?php endif; ?>
                         <?php elseif ($o['status'] == 3) : ?>
                           <span class="badge badge-secondary">Belum Checkout</span>
                         <?php endif; ?>
